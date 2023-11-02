@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/site.webmanifest">
+</head>
+<body>
+  <main>
+    <section class="newsletter">
+      <div class="section-wrapper">
+        <h1 class="visually-hidden">Sign up to the newsletter</h1>
+        <div class="decor"></div>
+        <div class="content-wrapper">
+          <p class="slogan">Stay updated!</p>
+          <p class="description">Join 60,000+ product managers receiving monthly updates on:</p>
+          <ul class="description-list">
+              <li>Product discovery and building what matters</li>
+              <li>Measuring to ensure updates are a success</li>
+              <li>And much more!</li>
+            </ul>
+          <!-- Sign-up form start -->
+          <form action="https://jsonplaceholder.typicode.com/posts" method="post" id="newsletter-form">
+            <h2 class="visually-hidden">Leave your email and we`ll do the rest</h2>
+            <div class="input-wrapper">
+              <div class="input-text">
+                <label for="email" class="input-label">Email address</label>
+                <span class="error">Valid email required</span>
+              </div>
+              <input type="email" name="email" id="email" placeholder="email@company.com" required>
+            </div>
+            <button type="submit" class="button" id="submit-button">Subscribe to monthly newsletter</button>
+          </form>
+          <!-- Sign-up form end -->
+        </div>
+      </div>
+    </section>
+      <section class="success" id="succes-popup">
+          <!-- Success message start -->
+          <div class="section-wrapper success-wrapper">
+            <h2 class="visually-hidden">Your data was submited successfully!</h2>
+            <div class="success-decor"></div>
+            <p class="slogan success-slogan">
+              Thanks for subscribing!
+            </p>
+            <p class="description">
+                A confirmation email has been sent to <span class="your-email">ash@loremcompany.com</span>. Please open it and click the button inside to confirm your subscription.
+            </p>
+            <button type="button" class="button success-button" autofocus>Dismiss message</button>
+          </div>
+          <!-- Success message end -->
+      </section>
+      <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Eugenija Antonova</a>.
+    </div>
+
+  </main>
+  <script type="module" src="/js/script.js"></script>
+</body>
+</html>
