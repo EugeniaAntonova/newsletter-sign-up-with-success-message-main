@@ -15,6 +15,18 @@ const isValidInput = (input) => {
     return inputValid;
 }
 
+const checkInput = (input) => {
+    if (!isValidInput(input.value) || input.value === '' || input.value === null) {
+        errorMessage.classList.remove('error');
+        errorMessage.classList.add('error--show');
+        submit.setAttribute('disabled', 'true');
+    } else {
+        errorMessage.classList.add('error');
+        errorMessage.classList.remove('error--show');
+        submit.removeAttribute('disabled', 'true');
+    };
+}
+
 const closeSuccess = () => {
     success.classList.remove('success--show');
     document.removeEventListener('keydown', onEscKeydown);
@@ -42,21 +54,17 @@ const openSuccess = () => {
 }
 
 input.addEventListener ('input', () => {
-    if (!isValidInput(input.value) || input.value === '') {
-        errorMessage.classList.remove('error');
-        errorMessage.classList.add('error--show');
-        submit.setAttribute('disabled', 'true');
-    } else {
-        errorMessage.classList.add('error');
-        errorMessage.classList.remove('error--show');
-        submit.removeAttribute('disabled', 'true');
-    };
+    checkInput(input);
 })
 form.addEventListener('submit', (evt) => {
     evt.preventDefault();
+    if (isValidInput(input)) {
+    openSuccess();
+    } else {
+    checkInput(input);    
+    }
 })
 
 submit.addEventListener('click', (evt) => {
     evt.preventDefault();
-    openSuccess()
 })
