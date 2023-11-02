@@ -15,8 +15,8 @@
 </head>
 <body>
   <main>
-    <section class="newsletter">
-      <div class="section-wrapper">
+    <section class="section newsletter">
+      <div class="section-wrapper newsletter-wrapper">
         <h1 class="visually-hidden">Sign up to the newsletter</h1>
         <div class="decor"></div>
         <div class="content-wrapper">
@@ -33,17 +33,19 @@
             <div class="input-wrapper">
               <div class="input-text">
                 <label for="email" class="input-label">Email address</label>
-                <span class="error">Valid email required</span>
+                <span class="error" id="error">Valid email required</span>
               </div>
-              <input type="email" name="email" id="email" placeholder="email@company.com" required>
+              <input type="email" name="email" id="email" placeholder="email@company.com" required title="Email looks like this: custom_name@service-name.domain">
             </div>
-            <button type="submit" class="button" id="submit-button">Subscribe to monthly newsletter</button>
+            <div class="button-wrapper">
+              <button type="submit" class="button" id="submit-button">Subscribe to monthly newsletter</button>
+            </div>
           </form>
           <!-- Sign-up form end -->
         </div>
       </div>
     </section>
-      <section class="success" id="succes-popup">
+      <section class="section success" id="succes-popup" role="dialog" aria-label="Success message">
           <!-- Success message start -->
           <div class="section-wrapper success-wrapper">
             <h2 class="visually-hidden">Your data was submited successfully!</h2>
@@ -54,7 +56,9 @@
             <p class="description">
                 A confirmation email has been sent to <span class="your-email">ash@loremcompany.com</span>. Please open it and click the button inside to confirm your subscription.
             </p>
-            <button type="button" class="button success-button" autofocus>Dismiss message</button>
+            <div class="button-wrapper success-button-wrapper">
+              <button type="button" class="button" id="success-button">Dismiss message</button>
+            </div>
           </div>
           <!-- Success message end -->
       </section>

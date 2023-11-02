@@ -77,11 +77,17 @@ p {
     margin-block-end: 35px;
 }
 
+.button-wrapper {
+    position: relative;
+    z-index: 30;
+}
+
 .button {
     position: relative;
     width: 100%;
     padding: 20px 23px;
     border-radius: 6px; 
+    font: inherit;
     font-weight: 800;
     color: #F8FAFF;
     border: none;
@@ -91,16 +97,17 @@ p {
     background-position: 50% 50%;
     background-size: 0 100%;
     cursor: pointer;
-    transition: background-size .3s ease, box-shadow .3s ease;
+    transition: background-size .3s ease, filter .15s ease;
 }
 
 .button::before {
     content: '';
     position: absolute;
-    inset:0;
+    inset: 0 2px;
+    z-index: -1;
     transform: scalex(0);
     box-shadow: 0px 10px 15px 0px rgba(255, 95, 93, 0.40);
-    transition: transform .3s ease, box-shadow .3s ease;
+    transition: transform .3s ease, box-shadow .15s ease;
 }
 
 .button::after {
@@ -113,7 +120,11 @@ p {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 0 100%;
-    transition: background-size .3s ease, filter .3s ease;
+    transition: background-size .3s ease;
+}
+
+.button:disabled {
+    filter: brightness(80%);
 }
 
 .button:focus-visible {
@@ -124,20 +135,33 @@ p {
     background-size: 100% 100%;
 }
 
-.button:hover {
+.button:not(:disabled):hover {
     background-size: 100% 100%;
 }
 
-.button:hover::before {
+.button:not(:disabled):hover::before {
     transform: scalex(1);
 }
 
 .button:active {
-    filter: brightness(95%);
+    filter: brightness(90%);
+    transform: translateY(3px);
 }
 
 .button:active::before {
-    box-shadow: 0px 5px 5px 0px rgba(255, 95, 93, 0.40);
+    box-shadow: 0px 3px 3px 0px rgba(255, 95, 93, 0.60);
+}
+
+.section {
+    position: relative;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-color: #23263F;
 }
 
 .section-wrapper {
@@ -148,14 +172,6 @@ p {
     display: flex;
     flex-direction: column;
     background-color: #F8FAFF;
-}
-
-.section-wrapper::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    background-color: #23263F;
 }
 
   /* -----------------------------newsletter screen styles */
@@ -236,15 +252,14 @@ p {
 
 .error {
     display: none;
-    color: #EA8078;
 }
 
 .error--show {
     display: inline;
+    color: #EA8078;
 }
 
 #email {
-    position: relative;
     width: 100%;
     padding: 20px 23px;
     border-radius: 6px; 
@@ -276,25 +291,42 @@ p {
 
 /* -------------------------------------- succsess styles */
 .success {
-    display: none;
-}
-.success--show {
     position: absolute;
-    inset: 0;
-    z-index: 10;
+    top: 0;
+    z-index: -100;
+    width: 100%;
     height: 100vh;
+    visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: center;
+    transition: all .5s ease;
+    transition-delay: .15s;
+}
+
+.success::before {
+    opacity: 0;
+    transition: opacity .3s ease;
+    transition-delay: .15s;
+}
+
+.success--show {
+    visibility: visible;
+    z-index: 100;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.success--show::before {
+    opacity: 1;
 }
 
 .success-wrapper {
     padding-block-start: 20vh; 
 }
-/* 
-.success-content::before {
-
-} */
 
 .success-decor {
     width: 64px;
@@ -310,7 +342,7 @@ p {
     font-weight: 800;
 }
 
-.success-button {
+.success-button-wrapper {
     margin-block-start: auto;
 }
 
@@ -318,12 +350,14 @@ p {
 
 @media (min-width: 1024px) {
     .section-wrapper {
-        width: 65%;
+        border-radius: 23px;        
+    }
+    .newsletter-wrapper {
+        width: 70%;
         height: 60%;
         padding-block-start: 23px;
-        max-width: 750px;
-        max-height: 515px;
-        border-radius: 23px;
+        max-width: 800px;
+        max-height: 565px;
         flex-direction: row-reverse;
         gap: 23px;
     }
@@ -367,12 +401,12 @@ p {
         height: 48%;
         max-width: 435px;
         max-height: 460px;
+        padding-block-start: 23px;
         flex-direction: column;
         justify-content: center;
-        gap: 0;
     }
 
-    .success-button {
+    .success-button-wrapper {
         margin-block-start: 0;
     }
 
