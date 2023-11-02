@@ -28,8 +28,8 @@ Users should be able to:
 - See hover and focus states for all interactive elements on the page
 
 
-i do not send the data anywhere, but all the rest of the functions work properly.
-
+I do not send the data anywhere, but all the rest of the functions work properly.
+Also, i did not buy the access to figma file, so everything was done from the pictures, and might differ sufficiently. With figma it is always easier.
 ## My process
 
 ### Built with
