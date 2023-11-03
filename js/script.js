@@ -9,14 +9,14 @@ const successBlanket = document.querySelector('.success');
 
 const isValidInput = (input) => {
     let inputValid = false;
-    if (input.match(/^[A-Za-z0-9\_\.]{1,}\@[A-Za-z0-9]{2,}\.[A-Za-z]{2,}$/)) {
+    if (input.value.match(/^[A-Za-z0-9\_\.]{1,}\@[A-Za-z0-9]{2,}\.[A-Za-z]{2,}$/)) {
         inputValid = true;
     };
     return inputValid;
 }
 
 const checkInput = (input) => {
-    if (!isValidInput(input.value) || input.value === '' || input.value === null) {
+    if (!isValidInput(input.value) || input.value === '') {
         errorMessage.classList.remove('error');
         errorMessage.classList.add('error--show');
         submit.setAttribute('disabled', 'true');
@@ -30,7 +30,8 @@ const checkInput = (input) => {
 const closeSuccess = () => {
     success.classList.remove('success--show');
     document.removeEventListener('keydown', onEscKeydown);
-    successCloseButton.removeEventListener('click', closeSuccess)
+    successCloseButton.removeEventListener('click', closeSuccess);
+    document.removeEventListener('click', onBlanketClick);
 }
 
 const onBlanketClick = (evt) => {
@@ -53,7 +54,7 @@ const openSuccess = () => {
 
 }
 
-input.addEventListener ('input', () => {
+input.addEventListener ('change', () => {
     checkInput(input);
 })
 form.addEventListener('submit', (evt) => {
@@ -63,8 +64,4 @@ form.addEventListener('submit', (evt) => {
     } else {
     checkInput(input);    
     }
-})
-
-submit.addEventListener('click', (evt) => {
-    evt.preventDefault();
 })
