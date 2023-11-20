@@ -1,7 +1,7 @@
 const form = document.querySelector('#newsletter-form');
 const input = form.querySelector('#email');
 const errorMessage = form.querySelector('#error');
-const submit = form.querySelector('#submit-button');
+const submitButton = form.querySelector('#submit-button');
 const success = document.querySelector('#succes-popup');
 const successCloseButton = success.querySelector('#success-button');
 const successBlanket = document.querySelector('.success');
@@ -20,12 +20,12 @@ const checkInput = (input) => {
     if (!isValidInput(input.value) || input.value === '') {
         errorMessage.classList.remove('error');
         errorMessage.classList.add('error--show');
-        submit.setAttribute('disabled', 'true');
+        submitButton.setAttribute('disabled', 'true');
     } else {
         errorMessage.classList.add('error');
         errorMessage.classList.remove('error--show');
-        submit.removeAttribute('disabled');
-        submit.addEventListener('click', openSuccess)
+        submitButton.removeAttribute('disabled');
+        submitButton.addEventListener('click', openSuccess)
     };
 }
 
@@ -56,7 +56,7 @@ const openSuccess = () => {
     document.addEventListener('click', onBlanketClick);
     setTimeout(() => {
         form.reset();
-        submit.setAttribute('disabled', true);
+        submitButton.setAttribute('disabled', true);
     }, 350)
 }
 
@@ -68,15 +68,13 @@ input.addEventListener ('input', () => {
     checkInput(input);
 })
 
-// form.addEventListener('submit', (evt) => {
-// })
-
-// ----------i had to prevent submition, because i don`t know how to avoid default error messages, and preventDefault did not help. so i decided to catch
-// every click.
-
-submit.addEventListener('click', (evt) => {
+form.addEventListener('submit', (evt) => {
+    const data = new FormData(form);
     evt.preventDefault();
     checkInput(input);
+    console.log(data.get('email'));
 })
 
-submit.setAttribute('disabled', true);
+// by default the button is disabled for the sake of more intuitive ux
+
+submitButton.setAttribute('disabled', true);
