@@ -125,6 +125,7 @@ p {
 
 .button:disabled {
     filter: brightness(80%);
+    pointer-events: none;
 }
 
 .button:focus-visible {

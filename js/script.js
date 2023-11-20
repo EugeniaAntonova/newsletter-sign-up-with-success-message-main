@@ -55,6 +55,7 @@ const openSuccess = () => {
     successCloseButton.addEventListener('click', closeSuccess);
     document.addEventListener('click', onBlanketClick);
     form.reset();
+    submit.setAttribute('disabled', true);
 }
 
 // i chose to use input instead of the change event, because validation is going more user friendly in this case. if i use change event, while focus 
@@ -75,3 +76,5 @@ submit.addEventListener('click', (evt) => {
     evt.preventDefault();
     checkInput(input);
 })
+
+submit.setAttribute('disabled', true);
