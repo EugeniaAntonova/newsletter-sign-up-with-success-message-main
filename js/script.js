@@ -54,8 +54,10 @@ const openSuccess = () => {
     document.addEventListener('keydown', onEscKeydown);
     successCloseButton.addEventListener('click', closeSuccess);
     document.addEventListener('click', onBlanketClick);
-    form.reset();
-    submit.setAttribute('disabled', true);
+    setTimeout(() => {
+        form.reset();
+        submit.setAttribute('disabled', true);
+    }, 350)
 }
 
 // i chose to use input instead of the change event, because validation is going more user friendly in this case. if i use change event, while focus 
