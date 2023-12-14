@@ -68,11 +68,30 @@ input.addEventListener ('input', () => {
     checkInput(input);
 })
 
-form.addEventListener('submit', (evt) => {
-    const data = new FormData(form);
+input.addEventListener ('input', () => {
+    checkInput(input);
+})
+
+form.addEventListener('submit', async (evt) => {
     evt.preventDefault();
     checkInput(input);
+    const data = new FormData(form);
     console.log(data.get('email'));
+    try {
+        const res = await fetch(
+          'https://jsonplaceholder.typicode.com/posts',
+          {
+            method: 'POST',
+            body: data,
+          },
+        );
+
+        const resData = await res.json();
+        console.log(resData);
+    } catch (err) {
+    console.log(err.message);
+  }  
+
 })
 
 // by default the button is disabled for the sake of more intuitive ux
