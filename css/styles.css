@@ -355,8 +355,7 @@ p {
     }
     .newsletter-wrapper {
         width: 70%;
-        min-height: fit-content;
-        height: 60%;
+        height: min-content;
         padding-block-start: 23px;
         max-width: 800px;
         max-height: 565px;
