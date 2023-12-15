@@ -365,7 +365,7 @@ p {
 
     .decor {
         height: 100%;
-        min-height: 100%;
+        min-height: 400px;
         width: calc(100% - 23px);
         margin: 0;
         border-radius: 15px;
